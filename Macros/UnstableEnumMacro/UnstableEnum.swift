@@ -134,8 +134,9 @@ extension UnstableEnum: ExtensionMacro {
             throw MacroError.isNotEnum
         }
 
+        // Use the provided type parameter which includes the full path for nested types
         let syntax: DeclSyntax = """
-            extension \(enumDecl.name): RawRepresentable, LosslessRawRepresentable, Hashable { }
+            extension \(type): RawRepresentable, LosslessRawRepresentable, Hashable { }
             """
         let ext = ExtensionDeclSyntax(syntax)!
 
